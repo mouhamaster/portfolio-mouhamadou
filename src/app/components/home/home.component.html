@@ -1,0 +1,190 @@
+    <section class="hero-section py-5">
+      <div class="container py-5">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h1 class="display-4 fw-bold mb-3">Mouhamadou Faye</h1>
+            <h2 class="text-primary mb-4">Développeur Fullstack</h2>
+            <p class="lead mb-4">
+              Passionné par la création d'applications web performantes et innovantes 
+              avec les dernières technologies du marché.
+            </p>
+            <div class="d-flex gap-3">
+              <a routerLink="/contact" class="btn btn-primary btn-lg px-4">
+                <i class="bi bi-envelope me-2"></i>Contactez-moi
+              </a>
+              <a href="#" class="btn btn-outline-secondary btn-lg px-4">
+                <i class="bi bi-file-earmark-pdf me-2"></i>Télécharger CV
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <img src="assets/images/profile.png" alt="Mouhamadou Faye" class="img-fluid rounded-circle shadow " style="height:400px;">
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="py-5">
+        <div class="container">
+          <h2 class="section-title text-center mb-5">À propos</h2>
+          
+          <div class="row">
+            <div class="col-lg-6">
+              <h3 class="mb-4">Qui suis-je ?</h3>
+              <p class="lead">
+                Développeur Fullstack avec 5 ans d'expérience dans la création d'applications web modernes.
+              </p>
+              <p>
+                Passionné par les nouvelles technologies, j'aime relever des défis techniques et proposer
+                des solutions optimales pour mes clients. Mon expertise couvre l'ensemble du cycle de
+                développement, du frontend au backend.
+              </p>
+            </div>
+            
+            <div class="col-lg-6">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h3 class="card-title mb-4">Informations personnelles</h3>
+                  <ul class="list-unstyled">
+                    <li class="mb-2"><i class="bi bi-person-fill me-2 text-primary"></i> <strong>Nom :</strong> Mouhamadou Faye</li>
+                    <li class="mb-2"><i class="bi bi-envelope-fill me-2 text-primary"></i> <strong>Email :</strong>{{email}}</li>
+                    <li class="mb-2"><i class="bi bi-phone-fill me-2 text-primary"></i> <strong>Téléphone :</strong> +221 77 250 76 41</li>
+                    <li class="mb-2"><i class="bi bi-geo-alt-fill me-2 text-primary"></i> <strong>Localisation :</strong> Dakar, Sénégal</li>
+                  </ul>
+                </div>
+              </div>
+            </div>  
+          </div>
+        </div>
+      </section>
+      
+    <section class="py-5 bg-light">
+        <div class="container">
+          <h2 class="section-title text-center mb-5">Mes compétences</h2>
+          
+          <div class="row g-4">
+            <div class="col-md-6" *ngFor="let skill of skills">
+              <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between mb-2">
+                    <h5 class="card-title mb-0">{{skill.name}}</h5>
+                    <span class="text-muted">{{skill.level}}%</span>
+                  </div>
+                  <div class="progress" style="height: 8px;">
+                    <div class="progress-bar bg-primary" role="progressbar" [style.width.%]="skill.level"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    <section class="py-5">
+        <div class="container">
+          <h2 class="section-title text-center mb-5">Mes projets</h2>
+          
+          <div class="row g-4">
+            <div class="col-md-4" *ngFor="let project of projects">
+              <div class="card h-100 shadow-sm">
+                <img [src]="project.image" class="card-img-top" [alt]="project.title" style="height: 80px; object-fit: cover;">
+                <div class="card-body">
+                  <h5 class="card-title">{{project.title}}</h5>
+                  <p class="card-text">{{project.description}}</p>
+                  <div class="mb-3">
+                    <span class="badge bg-secondary me-1" *ngFor="let tech of project.technologies">{{tech}}</span>
+                  </div>
+                </div>
+                <div class="card-footer bg-transparent">
+                  <a [href]="project.link" class="btn btn-outline-primary" target="_blank">
+                    <i class="bi bi-eye me-1"></i> Voir le projet
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+  
+      <section class="py-5 bg-light">
+        <div class="container">
+          <h2 class="section-title text-center mb-5">Contact</h2>
+          
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="card shadow-sm p-4">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Nom complet</label>
+                  <input type="text" class="form-control" id="name" formControlName="name">
+                  <div *ngIf="submitted && contactForm.controls['name'].errors" class="text-danger small">
+                    Ce champ est requis
+                  </div>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" formControlName="email">
+                  <div *ngIf="submitted && contactForm.controls['email'].errors" class="text-danger small">
+                    Veuillez entrer un email valide
+                  </div>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea class="form-control" id="message" rows="5" formControlName="message"></textarea>
+                  <div *ngIf="submitted && contactForm.controls['message'].errors" class="text-danger small">
+                    Le message doit contenir au moins 10 caractères
+                  </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                  <i class="bi bi-send me-1"></i> Envoyer
+                </button>
+                
+                <div *ngIf="success" class="alert alert-success mt-3 mb-0">
+                  Votre message a été envoyé avec succès !
+                </div>
+              </form>
+            </div>
+            
+            <div class="col-lg-6">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <h3 class="card-title mb-4">Coordonnées</h3>
+                  <ul class="list-unstyled">
+                    <li class="mb-3">
+                      <i class="bi bi-geo-alt-fill me-2 text-primary fs-5"></i>
+                      <span>Dakar, Sénégal</span>
+                    </li>
+                    <li class="mb-3">
+                      <i class="bi bi-envelope-fill me-2 text-primary fs-5"></i>
+                      <span>{{email}}</span>
+                    </li>
+                    <li class="mb-3">
+                      <i class="bi bi-telephone-fill me-2 text-primary fs-5"></i>
+                      <span>+221 77 250 76 41</span>
+                    </li>
+                  </ul>
+                  
+                  <hr>
+                  
+                  <h3 class="card-title mb-4">Réseaux sociaux</h3>
+                  <div class="d-flex gap-3">
+                    <a href="https://github.com/mouhamaster" class="text-decoration-none">
+                      <i class="bi bi-github fs-3"></i>
+                    </a>
+                    <a href="www.linkedin.com/in/mouhamed-faye-ba070414b" class="text-decoration-none">
+                      <i class="bi bi-linkedin fs-3"></i>
+                    </a>
+                    <a href="#" class="text-decoration-none">
+                      <i class="bi bi-twitter fs-3"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+ 

@@ -1,0 +1,82 @@
+
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h2 class="section-title text-center mb-5">Contact</h2>
+        
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="card shadow-sm p-4">
+              <div class="mb-3">
+                <label for="name" class="form-label">Nom complet</label>
+                <input type="text" class="form-control" id="name" formControlName="name">
+                <div *ngIf="submitted && contactForm.controls['name'].errors" class="text-danger small">
+                  Ce champ est requis
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" formControlName="email">
+                <div *ngIf="submitted && contactForm.controls['email'].errors" class="text-danger small">
+                  Veuillez entrer un email valide
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="5" formControlName="message"></textarea>
+                <div *ngIf="submitted && contactForm.controls['message'].errors" class="text-danger small">
+                  Le message doit contenir au moins 10 caractères
+                </div>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">
+                <i class="bi bi-send me-1"></i> Envoyer
+              </button>
+              
+              <div *ngIf="success" class="alert alert-success mt-3 mb-0">
+                Votre message a été envoyé avec succès !
+              </div>
+            </form>
+          </div>
+          
+          <div class="col-lg-6">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <h3 class="card-title mb-4">Coordonnées</h3>
+                <ul class="list-unstyled">
+                  <li class="mb-3">
+                    <i class="bi bi-geo-alt-fill me-2 text-primary fs-5"></i>
+                    <span>Dakar, Sénégal</span>
+                  </li>
+                  <li class="mb-3">
+                    <i class="bi bi-envelope-fill me-2 text-primary fs-5"></i>
+                    <span>{{email}}</span>
+                  </li>
+                  <li class="mb-3">
+                    <i class="bi bi-telephone-fill me-2 text-primary fs-5"></i>
+                    <span>+221 77 250 76 41</span>
+                  </li>
+                </ul>
+                
+                <hr>
+                
+                <h3 class="card-title mb-4">Réseaux sociaux</h3>
+                <div class="d-flex gap-3">
+                  <a href="https://github.com/mouhamaster" class="text-decoration-none">
+                    <i class="bi bi-github fs-3"></i>
+                  </a>
+                  <a href="www.linkedin.com/in/mouhamed-faye-ba070414b" class="text-decoration-none">
+                    <i class="bi bi-linkedin fs-3"></i>
+                  </a>
+                  <a href="#" class="text-decoration-none">
+                    <i class="bi bi-twitter fs-3"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ 

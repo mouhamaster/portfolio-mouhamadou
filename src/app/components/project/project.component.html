@@ -1,0 +1,27 @@
+
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title text-center mb-5">Mes projets</h2>
+        
+        <div class="row g-4">
+          <div class="col-md-4" *ngFor="let project of projects">
+            <div class="card h-100 shadow-sm">
+              <img [src]="project.image" class="card-img-top" [alt]="project.title">
+              <div class="card-body">
+                <h5 class="card-title">{{project.title}}</h5>
+                <p class="card-text">{{project.description}}</p>
+                <div class="mb-3">
+                  <span class="badge bg-secondary me-1" *ngFor="let tech of project.technologies">{{tech}}</span>
+                </div>
+              </div>
+              <div class="card-footer bg-transparent">
+                <a [href]="project.link" class="btn btn-outline-primary" target="_blank">
+                  <i class="bi bi-eye me-1"></i> Voir le projet
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+

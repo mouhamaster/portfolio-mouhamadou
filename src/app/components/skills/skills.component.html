@@ -1,0 +1,23 @@
+
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h2 class="section-title text-center mb-5">Mes compétences</h2>
+        
+        <div class="row g-4">
+          <div class="col-md-6" *ngFor="let skill of skills">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <div class="d-flex justify-content-between mb-2">
+                  <h5 class="card-title mb-0">{{skill.name}}</h5>
+                  <span class="text-muted">{{skill.level}}%</span>
+                </div>
+                <div class="progress" style="height: 8px;">
+                  <div class="progress-bar bg-primary" role="progressbar" [style.width.%]="skill.level"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
